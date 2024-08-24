@@ -1,8 +1,20 @@
 {
   "compilerOptions": {
+    "target": "ES2020",
+    "module": "commonjs",
+    "strict": true,
+    "esModuleInterop": true,
     "baseUrl": ".",
     "paths": {
       "*": ["node_modules/*"]
-    }
-  }
+    },
+    "types": [
+      "node",
+      "hardhat-deploy",
+      "hardhat-deploy-ethers",
+      "@nomiclabs/hardhat-ethers",
+      "@nomiclabs/hardhat-waffle"
+    ]
+  },
+  "include": ["./scripts", "./test", "./deploy", "./config", "./hardhat.config.ts"]
 }

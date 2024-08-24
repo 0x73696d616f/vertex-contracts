@@ -13,6 +13,8 @@ import 'solidity-coverage';
 import 'hardhat-gas-reporter';
 import 'hardhat-contract-sizer';
 import 'hardhat-abi-exporter';
+import 'hardhat-tracer';
+import '@nomicfoundation/hardhat-foundry';
 import { HardhatUserConfig } from 'hardhat/config';
 import * as configApp from './config';
 import * as path from 'path';
@@ -29,26 +31,26 @@ const config: HardhatUserConfig = {
       },
     },
   },
-  defaultNetwork: 'testnet',
+  defaultNetwork: 'mainnet',
   networks: {
-    'mainnet': {
+    mainnet: {
       url: configApp.config.mainnet.networkUrl,
-      chainId: configApp.config.mainnet.chainId,
+      chainId: 1666600000,
       accounts: [configApp.config.mainnet.privateKey],
     },
-    'testnet': {
-      url: configApp.config.testnet.networkUrl, 
-      chainId: configApp.config.testnet.chainId,
+    testnet: {
+      url: configApp.config.testnet.networkUrl,
+      chainId: 1666700000,
       accounts: [configApp.config.testnet.privateKey],
     },
-    'localhost': {
-      url: "http://127.0.0.1:8545",
+    localhost: {
+      url: 'http://127.0.0.1:8545',
       chainId: 31337,
     },
-    'hardhat': {
+    hardhat: {
       chainId: 31337,
       // accounts: [configApp.config.hardhat.privateKey]
-    }
+    },
   },
   namedAccounts: {
     deployer: {
@@ -80,7 +82,7 @@ const config: HardhatUserConfig = {
     tests: './test',
     cache: path.join(__dirname, 'cache', networkFolder),
     artifacts: path.join(__dirname, 'artifacts', networkFolder),
-    deploy:'./scripts/deploy'
+    deploy: './scripts/deploy',
   },
 };
 
